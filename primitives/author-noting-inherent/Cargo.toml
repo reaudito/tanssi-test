@@ -1,0 +1,66 @@
+[package]
+name = "tp-author-noting-inherent"
+authors = { workspace = true }
+description = "primitives related to author-noting-inherent"
+edition = "2021"
+license = "GPL-3.0-only"
+version = "0.1.0"
+
+[lints]
+workspace = true
+
+[dependencies]
+async-trait = { workspace = true, optional = true }
+parity-scale-codec = { workspace = true, features = [ "derive", "max-encoded-len" ] }
+scale-info = { workspace = true }
+
+dp-core = { workspace = true, optional = true }
+test-relay-sproof-builder = { workspace = true, optional = true }
+
+# Substrate
+sp-consensus-aura = { workspace = true, optional = true }
+sp-core = { workspace = true }
+sp-inherents = { workspace = true }
+sp-runtime = { workspace = true, optional = true }
+sp-state-machine = { workspace = true, optional = true }
+sp-trie = { workspace = true }
+sp-version = { workspace = true }
+
+# Cumulus
+cumulus-primitives-core = { workspace = true, optional = true }
+cumulus-primitives-parachain-inherent = { workspace = true, optional = true }
+cumulus-relay-chain-interface = { workspace = true, optional = true }
+
+[dev-dependencies]
+cumulus-pallet-parachain-system = { workspace = true }
+futures = { workspace = true }
+hex-literal = { workspace = true }
+polkadot-primitives = { workspace = true }
+sc-client-api = { workspace = true }
+
+[features]
+default = [ "std" ]
+std = [
+	"async-trait",
+	"cumulus-pallet-parachain-system/std",
+	"cumulus-primitives-core",
+	"cumulus-primitives-core?/std",
+	"cumulus-primitives-parachain-inherent",
+	"cumulus-primitives-parachain-inherent?/std",
+	"cumulus-relay-chain-interface",
+	"cumulus-relay-chain-interface",
+	"dp-core/std",
+	"parity-scale-codec/std",
+	"polkadot-primitives/std",
+	"scale-info/std",
+	"scale-info/std",
+	"sp-consensus-aura",
+	"sp-consensus-aura/std",
+	"sp-core/std",
+	"sp-inherents/std",
+	"sp-runtime/std",
+	"sp-state-machine/std",
+	"sp-trie/std",
+	"sp-version/std",
+	"test-relay-sproof-builder/std",
+]
